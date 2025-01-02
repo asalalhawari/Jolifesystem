@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ClientResource\Pages;
 use App\Filament\Admin\Resources\ClientResource\RelationManagers;
+use App\Filament\Admin\Resources\ClientResource\RelationManagers\ContactsRelationManager;
 use App\Models\Client;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -31,24 +32,13 @@ class ClientResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('client_name')
-                    ->label('اسم العميل')
-                    ->required()
-                    ->afterStateUpdated(function ($state, $set) {
-                        $set('job_title', null); 
-                    }),
-
-                Forms\Components\TextInput::make('job_title')
-                    ->label('الوظيفة أو الصفة')
-                    ->required(),
+               
 
                 Forms\Components\TextInput::make('company_name')
                     ->label('اسم الشركة')
                     ->required(),
 
-                Forms\Components\TextInput::make('contact_person')
-                    ->label('الشخص المسؤول')
-                    ->required(),
+              
 
                 Forms\Components\TextInput::make('email')
                     ->label('البريد الإلكتروني')
@@ -59,15 +49,9 @@ class ClientResource extends Resource
                     ->label('رقم الهاتف')
                     ->required(),
 
-                Forms\Components\TextInput::make('secondary_phone')
-                    ->label('الهاتف الثانوي')
-                    ->required()
-                    ->tel(),
+               
 
-                Forms\Components\TextInput::make('authorized_person')
-                    ->label('الشخص المفوض')
-                    ->required(),
-
+                
                 Forms\Components\TextArea::make('address')
                     ->label('العنوان')
                     ->required(),
@@ -80,29 +64,18 @@ class ClientResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('client_name')
-                    ->label('اسم العميل'),
-
+              
                 TextColumn::make('company_name')
                     ->label('اسم الشركة'),
 
-                TextColumn::make('contact_person')
-                    ->label('الشخص المسؤول'),
-
+              
                 TextColumn::make('email')
                     ->label('البريد الإلكتروني'),
 
                 TextColumn::make('phone')
                     ->label('رقم الهاتف'),
 
-                TextColumn::make('secondary_phone')
-                    ->label('الهاتف الثانوي'),
-
-                TextColumn::make('authorized_person')
-                    ->label('الشخص المفوض'),
-
-                TextColumn::make('job_title')
-                    ->label('الوظيفة أو الصفة'),
+           
             ])
             ->filters([])
             ->actions([ 
@@ -125,6 +98,7 @@ class ClientResource extends Resource
     public static function getRelations(): array
     {
         return [
+            ContactsRelationManager::class,
             RelationManagers\ProjectsRelationManager::class,
         ];
     }
