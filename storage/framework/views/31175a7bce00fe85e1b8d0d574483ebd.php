@@ -1,5 +1,0 @@
-<thead <?php echo e($attributes); ?>>
-    <?php echo e($slot); ?>
-
-</thead>
-<?php /**PATH C:\Users\Anas\system-manager\vendor\eightynine\filament-reports\src\/../resources/views/components/table/head.blade.php ENDPATH**/ ?>
