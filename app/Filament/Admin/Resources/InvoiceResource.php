@@ -25,7 +25,7 @@ class InvoiceResource extends Resource
                     ->label('رقم الفاتورة'),
                 
                 Forms\Components\Select::make('client_id')
-                    ->relationship('client', 'company_name')
+                    ->relationship('client', 'name')
                     ->required()
                     ->label('اسم العميل'),
                 
@@ -71,7 +71,7 @@ class InvoiceResource extends Resource
                     ->searchable()
                     ->sortable(),
                 
-                Tables\Columns\TextColumn::make('client.company_name')
+                Tables\Columns\TextColumn::make('client.name')
                     ->label('اسم العميل')
                     ->searchable(),
                 

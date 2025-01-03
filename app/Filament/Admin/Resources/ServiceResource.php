@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\ServiceResource\Pages;
 use App\Models\Service;
 use Filament\Forms;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -49,8 +50,9 @@ class ServiceResource extends Resource
                 Textarea::make('description')
                     ->label('وصف الخدمة')
                     ->nullable(),
-                TextInput::make('login')
+                RichEditor::make('login')
                     ->label('بيانات تسجيل الدخول')
+                    ->columnSpan(2)
                     ->nullable(),
             ]);
     }

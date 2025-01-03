@@ -49,7 +49,7 @@ class ClientsReport extends Report
                     ->schema([
                         Body\Table::make()
                             ->columns([
-                                TextColumn::make('company_name')
+                                TextColumn::make('name')
                                     ->label('اسم الشركة'),
                                 TextColumn::make('contact_person')
                                     ->label('الشخص المسؤول'),

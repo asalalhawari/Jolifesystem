@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use ZeeshanTariq\FilamentAttachmate\Core\InteractsWithAttachments;
 
 class Project extends Model
 {
+    use InteractsWithAttachments;
+
     protected $fillable = [
         'name',
         'project_description',

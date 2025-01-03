@@ -14,6 +14,8 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "spatie/laravel-permission": "^6.10",
+        "tomatophp/filament-invoices": "^1.0",
+        "tomatophp/filament-menus": "^1.0",
         "zeeshantariq/filament-attachmate": "^1.1"
     },
     "require-dev": {

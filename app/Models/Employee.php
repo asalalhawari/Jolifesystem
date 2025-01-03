@@ -9,7 +9,7 @@ class Employee extends Model
 {
     use InteractsWithAttachments;
 
-    protected $fillable = ['name', 'phone', 'address', 'contract_type', 'start_date', 'end_date', 'financial_dues', 'attachment' , 'company_id','national_id'];
+    protected $fillable = ['name', 'phone', 'address', 'contract_type', 'start_date', 'end_date', 'financial_dues' ,'national_id'];
 
 public function company()
 {

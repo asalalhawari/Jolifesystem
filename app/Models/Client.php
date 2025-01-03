@@ -9,7 +9,7 @@ class Client extends Model
 {
     use InteractsWithAttachments;
     protected $fillable = [
-        'company_name',
+        'name',
         'contact_person',
         'email',
         'phone',

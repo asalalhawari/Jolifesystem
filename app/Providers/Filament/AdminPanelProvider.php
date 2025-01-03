@@ -37,8 +37,10 @@ class AdminPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
                 Pages\Dashboard::class,
-                WelcomePage::class
+                // WelcomePage::class
             ])
+            ->plugin(\TomatoPHP\FilamentInvoices\FilamentInvoicesPlugin::make())
+
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,

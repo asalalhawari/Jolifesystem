@@ -8,6 +8,7 @@ use App\Filament\Admin\Resources\ClientResource\RelationManagers\ContactsRelatio
 use App\Models\Client;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Resources\RelationManagers\RelationGroup;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -34,7 +35,7 @@ class ClientResource extends Resource
             ->schema([
                
 
-                Forms\Components\TextInput::make('company_name')
+                Forms\Components\TextInput::make('name')
                     ->label('اسم الشركة')
                     ->required(),
 
@@ -56,7 +57,7 @@ class ClientResource extends Resource
                     ->label('العنوان')
                     ->required(),
 
-                CustomAttachmentFileUpload::make(),
+                CustomAttachmentFileUpload::make()->columnSpan(2),
             ]);
     }
 
@@ -65,7 +66,7 @@ class ClientResource extends Resource
         return $table
             ->columns([
               
-                TextColumn::make('company_name')
+                TextColumn::make('name')
                     ->label('اسم الشركة'),
 
               
@@ -98,8 +99,11 @@ class ClientResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ContactsRelationManager::class,
-            RelationManagers\ProjectsRelationManager::class,
+            RelationGroup::make('Contacts', [
+                ContactsRelationManager::class,
+                RelationManagers\ProjectsRelationManager::class,
+            ])
+            
         ];
     }
 
