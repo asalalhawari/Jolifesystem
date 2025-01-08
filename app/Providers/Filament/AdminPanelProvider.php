@@ -37,12 +37,14 @@ class AdminPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->pages([
                 Pages\Dashboard::class,
-                WelcomePage::class
+                // WelcomePage::class
             ])
+            ->plugin(\TomatoPHP\FilamentInvoices\FilamentInvoicesPlugin::make())
+
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-            ]) 
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -59,7 +61,11 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 \Hasnayeen\Themes\ThemesPlugin::make(),
                 ReportsPlugin::make(),
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
+
             ])
+            ->databaseNotifications()
+            ->databaseNotificationsPolling('30s')
             ->authMiddleware([
                 Authenticate::class,
             ]);

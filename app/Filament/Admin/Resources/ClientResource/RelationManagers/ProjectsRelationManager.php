@@ -2,6 +2,7 @@
 
 namespace App\Filament\Admin\Resources\ClientResource\RelationManagers;
 
+use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Form;
@@ -80,7 +81,8 @@ class ProjectsRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                \Filament\Tables\Actions\Action::make('edit')
+                    ->url(fn ($record) => route('filament.admin.resources.projects.edit', $record)),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

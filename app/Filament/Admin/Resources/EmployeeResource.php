@@ -21,6 +21,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\DeleteAction;
+use ZeeshanTariq\FilamentAttachmate\Forms\Components\AttachmentFileUpload;
 
 class EmployeeResource extends Resource
 {
@@ -30,7 +31,7 @@ class EmployeeResource extends Resource
 
     public static function form(Form $form): Form
     {
-        return $form->schema([  
+        return $form->schema([
             TextInput::make('name')
                 ->label('الاسم')
                 ->required(),
@@ -61,21 +62,11 @@ class EmployeeResource extends Resource
                 ->numeric()
                 ->required(),
 
-            FileUpload::make('identity_attachment')
-                ->label(' الهوية الشخصية')
-                ->disk('public')
-                ->directory('identity_documents') 
-                ->required(),
-
-            FileUpload::make('attachment')
-                ->label('مستند مرفق')
-                ->disk('public')
-                ->directory('attachments')
-                ->required(),
-
             TextInput::make('national_id')
                 ->label('الرقم الوطني')
-                ->required()
+                ->required(),
+            AttachmentFileUpload::make()->columnSpan(2),
+
         ]);
     }
 
@@ -110,13 +101,13 @@ class EmployeeResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            ProjectsRelationManager::class,
-            ContractsRelationManager::class,
-        ];
-    }
+    // public static function getRelations(): array
+    // {
+    //     return [
+    //         ProjectsRelationManager::class,
+    //         ContractsRelationManager::class,
+    //     ];
+    // }
 
     public static function getPages(): array
     {

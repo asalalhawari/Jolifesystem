@@ -11,6 +11,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use ZeeshanTariq\FilamentAttachmate\Forms\Components\AttachmentFileUpload;
 
 class ProjectResource extends Resource
 {
@@ -23,7 +24,7 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('project_name')
+                Forms\Components\TextInput::make('name')
                     ->label('اسم المشروع')
                     ->required(),
 
@@ -36,12 +37,14 @@ class ProjectResource extends Resource
                     ->numeric()
                     ->required(),
 
-                Forms\Components\Textarea::make('تفاصيل إضافية')
+                Forms\Components\Textarea::make('additional_details')
                     ->label('تفاصيل إضافية'),
 
                 Select::make('client_id')
-                    ->relationship('client', 'company_name')
+                    ->relationship('client', 'name')
                     ->label('اسم العميل'),
+                    AttachmentFileUpload::make()->columnSpan(2),
+
             ]);
     }
 
@@ -49,7 +52,7 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('project_name')
+                Tables\Columns\TextColumn::make('name')
                     ->label('اسم المشروع'),
 
                 Tables\Columns\TextColumn::make('project_description')

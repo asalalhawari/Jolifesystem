@@ -55,7 +55,7 @@ class InvoiceReport extends Report
                             ->searchable()
                             ->sortable(),
                         
-                        TextColumn::make('client.company_name')
+                        TextColumn::make('client.name')
                             ->label('اسم العميل')
                             ->searchable(),
                         

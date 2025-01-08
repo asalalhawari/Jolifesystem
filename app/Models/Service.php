@@ -9,7 +9,7 @@ class Service extends Model
     use HasFactory;
 
     protected $fillable = [
-        'project_id', 'name', 'hosted_by_us', 'host_name', 'description', 'login'
+        'project_id', 'name', 'hosted_by_us', 'host_name', 'description', 'login','start','end'
     ];
 
     public function project()
